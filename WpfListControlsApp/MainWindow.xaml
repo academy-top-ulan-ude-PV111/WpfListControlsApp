@@ -1,0 +1,121 @@
+﻿<Window x:Class="WpfListControlsApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfListControlsApp"
+        xmlns:coll="clr-namespace:System.Collections;assembly=netstandard"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel>
+        <!--
+        <ListBox x:Name="lstBox"
+                 FontSize="26"
+                 Width="300"
+                 Height="300"
+                 SelectionMode="Extended">
+            <ListBoxItem>Элемент 1</ListBoxItem>
+            <ListBoxItem>Элемент 2</ListBoxItem>
+            <ListBoxItem>Элемент 3</ListBoxItem>
+            <ListBoxItem>Элемент 4</ListBoxItem>
+            <ListBoxItem>Элемент 5</ListBoxItem>
+        </ListBox>
+        <Button Click="Button_Click">Click me</Button>
+        
+        <ListBox x:Name="lstBox"
+                 FontSize="26"
+                 Width="300"
+                 Height="300"
+                 >
+            
+            <local:User Name="Bob" Company="Yandex" Address="1.jpg"/>
+            <local:User Name="Bob" Company="Yandex" Address="2.jpg"/>
+            <local:User Name="Bob" Company="Yandex" Address="3.jpg"/>
+            
+            <ListBoxItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/1.jpg" Width="50" />
+                    <TextBlock FontSize="20" Margin="10">
+                        Bob
+                    </TextBlock>
+                </StackPanel>
+            </ListBoxItem>
+            <ListBoxItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/2.jpg" Width="50" />
+                    <TextBlock FontSize="20" Margin="10">
+                        Joe
+                    </TextBlock>
+                </StackPanel>
+            </ListBoxItem>
+            <ListBoxItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/3.jpg" Width="50" />
+                    <TextBlock FontSize="20" Margin="10">
+                        Leo
+                    </TextBlock>
+                </StackPanel>
+            </ListBoxItem>
+        </ListBox>
+            
+
+        <ComboBox x:Name="comboBox" 
+                  Width="300" 
+                  FontSize="30"
+                  IsEditable="True">
+            
+            <ComboBoxItem IsSelected="True">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/1.jpg" Width="50" />
+                    <TextBlock FontSize="20" Margin="10">
+                        Bob
+                    </TextBlock>
+                </StackPanel>
+            </ComboBoxItem>
+            <ComboBoxItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/2.jpg" Width="50" />
+                    <TextBlock FontSize="20" Margin="10">
+                        Joe
+                    </TextBlock>
+                </StackPanel>
+            </ComboBoxItem>
+            <ComboBoxItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/3.jpg" Width="50" />
+                    <TextBlock FontSize="20" Margin="10">
+                        Leo
+                    </TextBlock>
+                </StackPanel>
+            </ComboBoxItem>
+        </ComboBox>
+        -->
+
+        <ListView x:Name="listView"
+            FontSize="30"
+            ItemsSource="{DynamicResource ResourceKey=users}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn 
+                        DisplayMemberBinding="{Binding Path=Name}"
+                         Width="200">
+                        Name
+                    </GridViewColumn>
+                    <GridViewColumn 
+                        DisplayMemberBinding="{Binding Path=Company}"
+                        Width="200">
+                        Company
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+            <ListView.Resources>
+                <coll:ArrayList x:Key="users">
+                    <local:User Name="Bob" Company="Yandex"/>
+                    <local:User Name="Joe" Company="Mail Group"/>
+                    <local:User Name="Tim" Company="Ozon"/>
+                    <local:User Name="Sam" Company="Yandex"/>
+                </coll:ArrayList>
+            </ListView.Resources>
+        </ListView>
+    </StackPanel>
+</Window>
